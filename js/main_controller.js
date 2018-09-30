@@ -1,4 +1,5 @@
 let arr_original_hand = [];
+// This is a test
 
 $(function() {
   $("#add").click(add);
@@ -26,7 +27,7 @@ const returnHand = (stripped_arr) => {
       const new_arr = convertElevenToOne(stripped_arr);
       returnHand(new_arr);
     }
-  } 
+  }
   return value;
 };
 
@@ -34,7 +35,7 @@ const stripHand = () => {
   let arr_hand_to_analyse = [];
   for (let i in arr_original_hand) {
     let hint = arr_original_hand[i].substring(0, 1);
-    if (hint === "t") {™±
+    if (hint === "t") {
       arr_hand_to_analyse.push(10);
     } else if (hint === "e") {
       arr_hand_to_analyse.push(11);
@@ -54,16 +55,3 @@ const convertElevenToOne = (arr_for_conversion) => {
     }
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
