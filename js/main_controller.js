@@ -1,25 +1,35 @@
+//-------------------------------------
 let arr_original_hand = [];
-// This is a test
-
+//-------------------------------------
 $(function() {
   $("#add").click(add);
 });
-
+//-------------------------------------
 const add = () => {
   const value = $("#field_add").val();
   arr_original_hand.push(value);
   analyse();
 };
-
+//-------------------------------------
 const analyse = () => {
   const arr = stripHand();
   const hand = returnHand(arr);
   const real_hand = arr.reduce((a, b) => a + b);
+  if (checkForBust(real_hand)) {
+    alert("Busted!");
+  }
   $("#the_hand").text(`THE HAND : ${real_hand}`);
   $("#the_array").text(`THE ARRAY : ${arr}`);
   $("#field_add").val("");
 };
-
+//-------------------------------------
+const checkForBust = (value) => {
+  if (value > 21) {
+    return true;
+  }
+  return false;
+};
+//-------------------------------------
 const returnHand = (stripped_arr) => {
   let value = stripped_arr.reduce((a, b) => a + b);
   if (value > 21) {
@@ -30,7 +40,7 @@ const returnHand = (stripped_arr) => {
   }
   return value;
 };
-
+//-------------------------------------
 const stripHand = () => {
   let arr_hand_to_analyse = [];
   for (let i in arr_original_hand) {
@@ -46,7 +56,7 @@ const stripHand = () => {
   }
   return arr_hand_to_analyse;
 };
-
+//-------------------------------------
 const convertElevenToOne = (arr_for_conversion) => {
   for (let i in arr_for_conversion) {
     if (arr_for_conversion[i] === 11) {
@@ -55,3 +65,4 @@ const convertElevenToOne = (arr_for_conversion) => {
     }
   }
 };
+//-------------------------------------
